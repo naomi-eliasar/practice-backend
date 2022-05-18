@@ -23,6 +23,24 @@ module.exports = {
           updatedAt: new Date(),
           spaceId: 2,
         },
+        {
+          name: "Museum",
+          content: "Today I found some exotic flowers in the museum",
+          imageUrl:
+            "https://www.belltreeforums.com/attachments/molly5-jpg.276730/",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          spaceId: 2,
+        },
+        {
+          name: "Outdoor library",
+          content: "Amazing place to enjoy the good weather and a book",
+          imageUrl:
+            "https://bookstr.com/wp-content/uploads/2020/06/tumblr_2c038927b5f97105b6212620dae940eb_534aa083_640-1.jpg",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          spaceId: 1,
+        },
       ],
       {}
     );
