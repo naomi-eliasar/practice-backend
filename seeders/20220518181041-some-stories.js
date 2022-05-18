@@ -1,0 +1,34 @@
+"use strict";
+
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkInsert(
+      "Stories",
+      [
+        {
+          name: "Best story",
+          content: "Unlike anything you've heard before",
+          imageUrl:
+            "#https://www.belltreeforums.com/attachments/1590531878947-png.265979/",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          spaceId: 1,
+        },
+        {
+          name: "Flowers 101",
+          content: "It appears these are weeds",
+          imageUrl:
+            "https://64.media.tumblr.com/d4289a7a996280939b46c7653e0dd0f9/fcc3765c54474f76-9d/s400x600/3f3f1ca56f8c61c34788b46daf3ade7be7138b6b.jpg",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          spaceId: 2,
+        },
+      ],
+      {}
+    );
+  },
+
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkDelete("Stories", null, {});
+  },
+};
