@@ -17,7 +17,7 @@ module.exports = {
         {
           title: "Molly's space",
           description: "Flower connoisseur",
-          backgroundColor: "#000000",
+          backgroundColor: "#ffffff",
           color: "#000000",
           createdAt: new Date(),
           updatedAt: new Date(),
