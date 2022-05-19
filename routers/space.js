@@ -11,4 +11,18 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.get("/:id", async (req, res, next) => {
+  try {
+    const specificSpace = await Space.findByPk(req.params.id);
+    if (!specificSpace) {
+      res.status(404).send(`Space with id ${req.params.id} not found`);
+    } else {
+      res.send(specificSpace);
+    }
+  } catch (e) {
+    console.log(e);
+    next(e);
+  }
+});
+
 module.exports = router;
