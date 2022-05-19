@@ -9,7 +9,7 @@ module.exports = {
           name: "Best story",
           content: "Unlike anything you've heard before",
           imageUrl:
-            "#https://www.belltreeforums.com/attachments/1590531878947-png.265979/",
+            "https://www.belltreeforums.com/attachments/1590531878947-png.265979/",
           createdAt: new Date(),
           updatedAt: new Date(),
           spaceId: 1,
