@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = new Router();
 const Space = require("../models").Space;
+const Story = require("../models").Story;
 
 router.get("/", async (req, res, next) => {
   try {
@@ -13,7 +14,9 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const specificSpace = await Space.findByPk(req.params.id);
+    const specificSpace = await Space.findByPk(req.params.id, {
+      include: [{ model: Story }],
+    });
     if (!specificSpace) {
       res.status(404).send(`Space with id ${req.params.id} not found`);
     } else {
