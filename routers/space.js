@@ -44,4 +44,26 @@ router.delete("/story/:id", async (req, res, next) => {
   }
 });
 
+router.post("/story", async (req, res, next) => {
+  try {
+    const { name, content, imageUrl, spaceId } = req.body;
+    const space = await Space.findByPK(spaceId);
+
+    if (!space) {
+      res.status(404).send(`No space with id ${spaceId} found`);
+      return;
+    } else {
+      if (!name || !content || !imageUrl || !spaceId) {
+        res.status(400).send("Not enough information provided");
+        return;
+      }
+    }
+    const newStory = await Story.create({ name, content, imageUrl, spaceId });
+    res.send(newStory);
+  } catch (e) {
+    console.log(error.message);
+    next(error);
+  }
+});
+
 module.exports = router;
