@@ -29,4 +29,19 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+router.delete("/story/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const storyToDelete = await Story.findByPk(id);
+
+    if (!storyToDelete) return res.status(404).send("no story found");
+
+    await storyToDelete.destroy();
+
+    res.send({ message: "story deleted" });
+  } catch (e) {
+    console.log(e.message);
+  }
+});
+
 module.exports = router;
