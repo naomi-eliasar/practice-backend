@@ -3,6 +3,8 @@ const { Router } = require("express");
 const { toJWT } = require("../auth/jwt");
 const authMiddleware = require("../auth/middleware");
 const User = require("../models/").user;
+const Space = require("../models/").Space;
+const Story = require("../models").Story;
 const { SALT_ROUNDS } = require("../config/constants");
 
 const router = new Router();
@@ -45,6 +47,19 @@ router.post("/signup", async (req, res) => {
       email,
       password: bcrypt.hashSync(password, SALT_ROUNDS),
       name,
+    });
+
+    const newSpace = await Space.create({
+      title: newUser.name,
+      description: null,
+      backgroundColor: "#ffffff",
+      color: "#000000",
+      userId: newUser.id,
+    });
+
+    const user = await User.findByPk(newUser.id, {
+      where: { email },
+      include: [{ model: Space, include: [Story] }],
     });
 
     delete newUser.dataValues["password"]; // don't send back the password hash
