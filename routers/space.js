@@ -47,7 +47,7 @@ router.delete("/story/:id", async (req, res, next) => {
 router.post("/story", async (req, res, next) => {
   try {
     const { name, content, imageUrl, spaceId } = req.body;
-    const space = await Space.findByPK(spaceId);
+    const space = await Space.findByPk(spaceId);
 
     if (!space) {
       res.status(404).send(`No space with id ${spaceId} found`);
@@ -61,8 +61,8 @@ router.post("/story", async (req, res, next) => {
     const newStory = await Story.create({ name, content, imageUrl, spaceId });
     res.send(newStory);
   } catch (e) {
-    console.log(error.message);
-    next(error);
+    console.log(e.message);
+    next(e);
   }
 });
 
